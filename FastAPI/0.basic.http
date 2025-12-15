@@ -11,3 +11,14 @@ GET http://127.0.0.1:8000
 ###
 
 GET http://127.0.0.1:8000/item
+
+###
+
+PUT http://127.0.0.1:8000/item
+Content-Type: application/json
+
+{
+  "Google": "Https://goo.gle",
+}
+
+###
