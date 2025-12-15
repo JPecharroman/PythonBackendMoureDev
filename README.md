@@ -189,7 +189,7 @@
 
     Extensiones para Visual Studio Code, o Antigravity, para instalar exteensiones en VSCode usar ctrl+shift+x:
 
-    - Thunder Client: Thunder Client es una extensión de cliente API Rest ligera para VS Code.
+    - Thunder Client: Thunder Client es una extensión de cliente API Rest ligera para VS Code. (Al tiempo de escribir este README, no se puede usar en Antigravity gratuitamente, la usaremos desde VSCode)
 
     - REST Client: REST Client es una extensión de cliente API Rest que permite enviar solicitudes HTTP y ver la respuesta en Visual Studio Code directamente.
 
