@@ -1,0 +1,13 @@
+### Probamos una aplicación básica de FastAPI que responde a solicitudes HTTP GET en 
+### dos rutas diferentes.
+
+### Usamos la extension REST Client para enviar solicitudes HTTP.
+### La aplicación FastAPI debe estar en ejecución en http://127.0.0.1:8000 
+### para que estas solicitudes funcionen.
+###
+
+GET http://127.0.0.1:8000
+
+###
+
+GET http://127.0.0.1:8000/item
