@@ -78,7 +78,7 @@
 
     FastAPI usa type hints para validar los datos que se envian a la API.
 
-    Se desarrolla la seccion de Type Hints en el archivo 01_type_hints.py
+    Se desarrolla la seccion de Type Hints en el archivo [01_type_hints.py](https://github.com/JPecharroman/PythonBackendMoureDev/blob/main/01_type_hints.py).
 
     FastAPI aprovecha los type hints para:
         a. Definir requisitos para los datos que se envian a la API, 
@@ -92,3 +92,105 @@
         e. Generar documentacion automatica de la API usando OpenAPI.
         f. Generar codigo de cliente para muchos lenguajes de programacion.
     
+### 5. Instalacion de FastAPI
+
+    Para instalar FastAPI usamos el siguiente comando en la terminal (para abrir la terminal en antigravity crtl+shift+ñ):
+
+    pip3 install fastapi
+
+    Al principio, para este tutorial, usaremos la version 0.124.4 de FastAPI y la
+    instalaremos con todas sus dependencias:
+
+    pip3 install fastapi[standard]
+
+    Instalaremos tambien [uvicorn](https://www.uvicorn.dev/), que es un servidor web para ejecutar APIs en
+    local, esto es, crearemos un servidor web local en nuestro ordenador para ejecutar nuestras APIs:
+
+    pip3 install "uvicorn[standard]"
+
+    **NOTA**: uvicorn es un servidor web para desarrollo, no es recomendado usarlo en producción.
+
+    __a.__ Primeros Pasos con FastAPI
+
+        Vamos a crear un archivo llamado `main.py` en la carpeta `FastAPI` y vamos a crear una API con FastAPI. 
+
+    ```python 3.8+
+    from fastapi import FastAPI
+
+    app = FastAPI()
+
+    @app.get("/")
+    def read_root():
+        return {"Hello": "World"}
+    ```
+
+    Corremos la API con el siguiente comando:
+    ```
+    uvicorn main:app --reload
+    ```
+    Levantamos el servidor web local en nuestro ordenador para ejecutar nuestras APIs, main es el archivo principal y app es la instancia de FastAPI que creamos en el archivo main.py.
+
+    --reload es un parametro que permite que el servidor se recargue automaticamente cuando detecte cambios en el codigo.
+
+    Para detener el servidor web local, usamos el siguiente comando:
+    ```
+    Ctrl + C
+    ```
+
+    Nos devolvera un JSON con el siguiente contenido:
+    ```json
+    {
+        "Hello": "World"
+    }
+    ```
+    Como vemos este JSON?, entramos en la direccion que nos indica el servidor web local, que es http://127.0.0.1:8000/.
+
+    Si entramos en esta direccion, veremos la misma informacion que nos devuelve la API.
+
+    Si entramos en la direccion http://127.0.0.1:8000/docs/ veremos la documentacion de la API, realizada por [Swagger](https://swagger.io/).
+
+    Si entramos en la direccion http://127.0.0.1:8000/redoc/ veremos la documentacion de la API, realizada por [ReDoc](https://redocly.com/).
+
+
+    Dentro del archivo main.py se define una ruta de acceso GET, que es la ruta de acceso por defecto de la API.
+
+    GET forma parte de las operaciones CRUD (Create, Read, Update, Delete) disponibles en el protocolo HTTP.
+    CRUD con HTTP se refiere a como los metodos estandar HTTP (GET, POST, PUT, PATCH, DELETE) se mapean a las operaciones fundamentales de gestion de datos (Create, Read, Update, Delete) en APIs, permitiendo realizar operaciones CRUD a traves de peticiones HTTP.
+
+    Mapeo de operaciones CRUD con HTTP:
+    - Crear(Create): usamos la operacion POST
+    - Leer(Read): usamos la operacion GET
+    - Actualizar(Update): usamos la operacion PUT
+    - Eliminar(Delete): usamos la operacion DELETE
+
+    GET es la operacion por defecto de la API, es decir, cuando accedemos a la ruta de acceso GET, se ejecuta la operacion GET por defecto.
+
+    Aplicaciones externas para poder realizar peticiones HTTP:
+
+    - [Postman](https://www.postman.com/)
+
+        La mas usada y la mas completa.
+        "Unifique el diseño, las pruebas, la documentación, la supervisión y el descubrimiento de API en una plataforma que se integra con el resto de su pila, incluidas todas las principales puertas de enlace y soluciones Git."
+
+    - [Insomnia](https://insomnia.rest/)
+
+        "Una plataforma de colaboración API nativa de IA para desarrolladores que no paran de desarrollar. Prueba, depura y diseña cualquier punto final con soporte para clientes MCP, capacidades basadas en IA y flujos de trabajo fluidos locales, en Git o en la nube."
+
+    - [cURL](https://curl.se/)
+
+        "Herramienta de línea de comandos y biblioteca para transferir 
+        datos con URL."
+
+    - [HTTPie](https://httpie.io/)
+
+        "HTTPie está haciendo que las API sean simples e intuitivas para 
+        quienes construyen las herramientas de nuestro tiempo."
+
+
+    Extensiones para Visual Studio Code, o Antigravity, para instalar exteensiones en VSCode usar ctrl+shift+x:
+
+    - Thunder Client: Thunder Client es una extensión de cliente API Rest ligera para VS Code.
+
+    - REST Client: REST Client es una extensión de cliente API Rest que permite enviar solicitudes HTTP y ver la respuesta en Visual Studio Code directamente.
+
+    - 
