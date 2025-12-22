@@ -187,10 +187,76 @@
         quienes construyen las herramientas de nuestro tiempo."
 
 
-    Extensiones para Visual Studio Code, o Antigravity, para instalar exteensiones en VSCode usar ctrl+shift+x:
+    Extensiones para Visual Studio Code, o Antigravity, para instalar extensiones en VSCode usar ctrl+shift+x:
 
     - Thunder Client: Thunder Client es una extensión de cliente API Rest ligera para VS Code. (Al tiempo de escribir este README, no se puede usar en Antigravity gratuitamente, la usaremos desde VSCode)
 
     - REST Client: REST Client es una extensión de cliente API Rest que permite enviar solicitudes HTTP y ver la respuesta en Visual Studio Code directamente.
 
     - 
+
+### 6. Crear una operacion de la ruta
+
+    Path, ruta, ultima parte de la URL, a partir de la primera barra (/).
+
+    En la direccion https://127.0.0.1:8000/item el path es /item, en una direccion como https://127.0.0.1:8000/item/1 el path es /item/1
+
+    Operaciones CRUD con HTTP, aqui nos referimos a uno de los metodos HTTP que usamos para realizar operaciones CRUD (Create, Read, Update, Delete):
+    - Crear(Create): usamos la operacion POST
+    - Leer(Read): usamos la operacion GET
+    - Actualizar(Update): usamos la operacion PUT
+    - Eliminar(Delete): usamos la operacion DELETE
+
+    Tenemos otras cuatro opciones menos usuales:
+    - PATCH: sirve para actualizar una parte de un recurso, usamos la operacion PATCH
+    - OPTIONS: sirve para obtener informacion sobre los metodos HTTP que se pueden usar con un recurso, usamos la operacion OPTIONS
+    - HEAD: sirve para obtener informacion sobre un recurso, usamos la operacion HEAD
+    - TRACE: sirve para depurar una peticion HTTP, usamos la operacion TRACE
+
+    En el protocolo HTTP, te puedes comunicar con cada path usando uno, o varios, de estos metodos HTTP.
+
+    En main.py, linea 15, vemos la operacion GET, y el path "/" en el comando @app.get("/").
+    Este comando indica a FastAPI que la operacion GET se va a ejecutar cuando se acceda al path "/".
+
+    ** @decorator **
+    A @algo en python se le llama decorator, decorador, esto es porque va encima de una funcion, como si fuera un sombrero.
+    Un decorador coge la funcion que esta inmediatamente debajo y hace algo con ella.
+    En este caso, el decorador @app.get("/") le dice a FastAPI que la funcion a continuacion corresponde a la operacion GET del path "/".
+    Este es el "decorador de operacion de trayectoria".
+
+    Otros decoradores:
+    - @app.post("/")
+    - @app.put("/")
+    - @app.delete("/")
+
+    - @app.patch("/")
+    - @app.options("/")
+    - @app.head("/")
+    - @app.trace("/")
+    
+### 7. Crear una funcion para la operacion de ruta
+
+    Volvamos a main.py, tenemos:
+
+    """
+    @app.get("/")
+    async def root():
+        return {"message": "Hello World"}
+    """
+    
+    Donde:
+    - Ruta o path: /
+    - Operacion: GET
+    - Decorador: @app.get("/")
+    - Funcion: async def root():
+        - async: indica que la funcion es asincrona, sigue ejecutandose mientras espera una respuesta
+        - root: nombre de la funcion
+
+    Esta funcion sera llamada por FastAPI cuando se acceda al path "/" con la operacion GET.
+
+    Para devolver el contenido de la funcion, usamos el comando return. Podemos devolver un diccionario, una lista, un string, un numero, etc.
+    """
+    return {"message": "Hello World"}
+    """
+
+    
