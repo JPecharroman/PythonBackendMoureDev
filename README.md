@@ -259,4 +259,42 @@
     return {"message": "Hello World"}
     """
 
+### 8. Uso de modelado de datos con BaseModel para FastAPI
+
+    Lo primero que necesitamos es importar la clase BaseModel de la libreria pydantic.
     
+    """
+    from pydantic import BaseModel
+    """
+
+    Luego creamos una clase que hereda de BaseModel, y le indicamos los campos que queremos que tenga.
+    """
+    class User(BaseModel):
+        nombre: str
+        apellido: str
+        url: str
+        edad: int
+    """
+
+    BaseModel permite crear un modelo de datos que se puede usar para validar los datos que se envian a la API a traves de la entidad User, esto es, no tenemos que crear un modelo de datos para cada operacion de ruta.
+
+    A continuacion crearemos una lista con los usuarios que tengamos usando la entidad User.
+
+    """
+    lista_usuarios = [User(nombre= "Manolo", apellido= "Perez", url= "https://www.google.com/", edad= 30),
+    User(nombre= "Juan", apellido= "Garcia", url= "https://www.google.com/", edad= 25),
+    User(nombre= "Pedro", apellido= "Gonzalez", url= "https://www.google.com/", edad= 40)]
+    """
+
+    Ya tenemos nuestros usuarios en una lista preparada para pasarla a la API.
+
+    """
+    @app.get("/users")
+    async def users():
+        return lista_usuarios
+    """
+
+    Hemos pasado nuestra lista de usuarios al servidor web a través de la API, ahora podemos acceder a ella desde el navegador.
+    
+
+
