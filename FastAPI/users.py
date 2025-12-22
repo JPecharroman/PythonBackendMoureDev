@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 
+# Importamos BaseModel de pydantic para crear un modelo de datos
+from pydantic import BaseModel
+
 # Crear una instancia de FastAPI
 app = FastAPI()
 
@@ -16,7 +19,7 @@ async def users():
     Funcion: async def users():
     devuelve un JSON con la lista de usuarios: ["users"]
     """
-    return {"user1": "Manolo", "user2": "Juan", "user3": "Pedro"}
+    return [{"nombre": "Manolo", "apellido": "Perez", "edad": 30}, {"nombre": "Juan", "apellido": "Garcia", "edad": 25}, {"nombre": "Pedro", "apellido": "Gonzalez", "edad": 40}]
 
 # Para iniciar el servidor con users usamos el siguiente comando:
 # uvicorn users:app --reload
