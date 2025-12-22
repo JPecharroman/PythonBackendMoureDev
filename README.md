@@ -296,5 +296,39 @@
 
     Hemos pasado nuestra lista de usuarios al servidor web a través de la API, ahora podemos acceder a ella desde el navegador.
     
+### 9. Uso del path para pasar parametros a la API
+
+    Podemos usar el path que definimos en el decorador para pasarle un parametro a la API, en este caso usamos el campo clave para pedir el usuario que necesitamos.
+    Tenemos que pasarle a la funcion la clave que le pasamos en el path.
+    Para acceder al usuario usamos la clave que queremos en el path, por ejemplo:
+    https://127.0.0.1:8000/users/0 si quiero acceder al primer usuario
+    https://127.0.0.1:8000/users/1 si quiero acceder al segundo usuario
+    https://127.0.0.1:8000/users/2 si quiero acceder al tercer usuario
+    ...
+    Definimos un modelo de datos con Basemodel que tengo algun campo de tipo clave.
+    """
+    class usuario(BaseModel):
+        dni: int
+        nombre: str
+    """
+    Creamos una lista de usuarios con la entidad usuario.
+    """
+    usuarios = [usuario(dni= 1, nombre= "Manolo"),
+    usuario(dni= 2, nombre= "Juan"),
+    usuario(dni= 3, nombre= "Pedro")]
+    """
+
+    Creamos el decorador con el path, el parametro dni que le pasamos en el path y la operacion GET.
+    Definimos la funcion que recibe el parametro dni que le pasamos en el path.
+    Devolvemos el usuario que corresponde al dni que le pasamos en el path.
+
+    """
+    @app.get("/users/{dni}")
+    async def users(dni: int):
+        return usuarios[dni]
+    """
+
+    Para acceder a ese campo concreto, como hemos visto mas arriba, usamos el path, por ejemplo:
+    https://127.0.0.1:8000/users/1, nos devolvera el usuario con dni 1.
 
 
